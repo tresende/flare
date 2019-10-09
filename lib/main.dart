@@ -19,16 +19,28 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String _anim = 'Spin';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+          child: GestureDetector(
+        onTap: () {
+          setState(() {
+            if (_anim == 'Spin') {
+              _anim = '';
+            } else {
+              _anim = 'Spin';
+            }
+          });
+        },
         child: Container(
           width: 100,
           height: 100,
-          child: FlareActor('assets/anin_gears.flr', animation: 'Spin'),
+          child: FlareActor('assets/anin_gears.flr', animation: _anim),
         ),
-      ),
+      )),
     );
   }
 }
